@@ -16,11 +16,10 @@ export function SearchProvider(props){
     }
 
     const searchButton = () => {
-        //passando search={type, value};
-        // const req = axios.get('https://j7tz26cwje.execute-api.sa-east-1.amazonaws.com/prod/products');
-        //     req.then((response) => {
-        //         setProducts(response.data);
-        //     }).catch((e) => console.log(e))
+        const params = { type, value }
+        const req = axios.get(process.env.API_URL, params);
+        req.then((response) => {setResponse(response.data)})
+            .catch((error) => {throw error});
 
         console.log(value);
     }
