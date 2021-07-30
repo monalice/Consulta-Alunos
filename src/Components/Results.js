@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
 import styled from 'styled-components';
 import SearchContext from '../Contexts/SearchContext';
+import Student from './Student';
 
 export default function Results() {
     const { response, clicked } = useContext(SearchContext);
@@ -8,20 +9,32 @@ export default function Results() {
     return (
         <>
         {clicked ? (
-            <Container>
+            <Result>
+                <Header>
+                    <div> NOME </div>
+                    <div> EMAIL </div>
+                    <div> CPF </div>
+                </Header>
                 <div>
-                    hi 
+                    {response.length !== 0
+                        ? response.map((s) => <Student s={s} key={s.id} />)
+                        : ''}
                 </div>
-            </Container>
+            </Result>
         ) : (<></>)}
         </>
     )
 };
 
-const Container = styled.div `
-    font-family: 'Oswald', sans-serif;
-    text-align: left;
+const Result = styled.section`
+    height: 100%;
+    width: 60%;
+    margin: 0 auto;
+`;
+
+const Header = styled.div`
+    display: flex;
+    justify-content: space-between;
     font-size: 30px;
-    color: #fff;
-    margin: 50px 0px 50px 50px;
+    padding: 10px 20px;
 `;

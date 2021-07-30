@@ -16,7 +16,6 @@ export function SearchProvider(props){
             type,
             value
         }
-        console.log(params);
         try {
             const req = axios.post(process.env.REACT_APP_API_URL, { params });
             req.then(res => {
@@ -31,9 +30,6 @@ export function SearchProvider(props){
         catch (error) {
             throw new Error(error);
         }
-        
-        console.log(response);
-        
     }
 
     return (
