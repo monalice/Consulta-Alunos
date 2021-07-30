@@ -16,10 +16,6 @@ export function SearchProvider(props){
             type,
             value
         }
-
-    console.log(value)
-    console.log(type)
-    console.log(response)
         try {
             const req = axios.post(process.env.REACT_APP_API_URL, { params });
             req.then(res => {
