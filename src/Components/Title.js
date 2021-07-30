@@ -3,13 +3,13 @@ import styled from 'styled-components';
 
 export default function Title() {
     return (
-        <Title>
+        <Section>
             Realize aqui a sua consulta aos alunos cadstrados
-        </Title>
+        </Section>
     )
 };
 
-const Title = styled.section `
+const Section = styled.section `
     font-family: 'Oswald', sans-serif;
     text-align: center;
     margin-top: 100px;

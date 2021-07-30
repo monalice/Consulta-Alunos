@@ -16,12 +16,16 @@ export function SearchProvider(props){
     }
 
     const searchButton = () => {
-        const params = { type, value }
-        const req = axios.get(process.env.API_URL, params);
-        req.then((response) => {setResponse(response.data)})
-            .catch((error) => {throw error});
-
-        console.log(value);
+        const params = {
+            type,
+            value
+        }
+        console.log(params);
+    
+        const req = axios.get(`http://localhost:8000/`, { params });
+        req.then(res => setResponse(res)).catch(err => {throw new Error(err)});
+        console.log(response);
+        
     }
 
     return (
