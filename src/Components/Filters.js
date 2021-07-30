@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import SearchContext from '../Contexts/SearchContext';
 
 export default function Filters() {
-    const { type, setType, handleChange, searchButton } = useContext(SearchContext);
+    const { type, setType, setValue, searchButton } = useContext(SearchContext);
 
 
     return (
@@ -21,7 +21,7 @@ export default function Filters() {
                 <Input 
                     type="text"
                     placeholder="Busca"
-                    onChange={(e) => handleChange(e)}
+                    onChange={(e) => setValue(e.target.value)}
                 />
                 <Button onClick={searchButton}>Buscar Alunos</Button>
                 </>) 

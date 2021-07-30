@@ -9,11 +9,7 @@ export function SearchProvider(props){
     const [ type, setType ] = useState('all');
     const [ value, setValue ] = useState('');
     const [ response, setResponse ] = useState([]);
-
-
-    const handleChange = (e) => {
-        setValue(e.target.value);
-    }
+    const [ clicked, setClicked ] = useState(false);
 
     const searchButton = () => {
         const params = {
@@ -21,9 +17,21 @@ export function SearchProvider(props){
             value
         }
         console.log(params);
-    
-        const req = axios.get(`http://localhost:8000/`, { params });
-        req.then(res => setResponse(res)).catch(err => {throw new Error(err)});
+        try {
+            const req = axios.post(process.env.REACT_APP_API_URL, { params });
+            req.then(res => {
+                    setResponse(res.data);
+                    setClicked(true);
+            })
+                .catch(err => {
+                    console.log(err);
+                    alert('Insira uma pesquisa válida, por favor!');
+                });
+        } 
+        catch (error) {
+            throw new Error(error);
+        }
+        
         console.log(response);
         
     }
@@ -34,10 +42,10 @@ export function SearchProvider(props){
                 type, 
                 setType, 
                 value, 
-                setValue, 
+                setValue,
+                clicked,
                 response, 
-                setResponse, 
-                handleChange, 
+                setResponse,
                 searchButton
             }}>
             {props.children}
