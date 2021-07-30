@@ -16,8 +16,11 @@ export function SearchProvider(props){
             type,
             value
         }
+        const headers = {
+            headers: { Authorization: 'Bearer ' + '12345'}
+        }
         try {
-            const req = axios.post(process.env.REACT_APP_API_URL, { params });
+            const req = axios.post(process.env.REACT_APP_API_URL, {params}, {headers});
             req.then(res => {
                     setResponse(res.data);
                     setClicked(true);
